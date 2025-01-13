@@ -92,14 +92,20 @@ const CreateNew = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.addNew({
-      content,
-      author,
-      info,
+      content: content.value,
+      author: author.value,
+      info: info.value,
       votes: 0,
     });
 
     // Navigate to the /anecdotes
     navigate("/");
+  };
+
+  const handleClickReset = () => {
+    content.reset();
+    author.reset();
+    info.reset();
   };
 
   return (
@@ -118,7 +124,10 @@ const CreateNew = (props) => {
           url for more info
           <input {...info} />
         </div>
-        <button>create</button>
+        <button type="submit">create</button>
+        <button type="button" onClick={handleClickReset}>
+          reset
+        </button>
       </form>
     </div>
   );
